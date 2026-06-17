@@ -1,11 +1,19 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Lato, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lato = Lato({
+  weight: ["400", "700", "900"],
+  variable: "--font-lato",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,10 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full`}>
-      <body className="min-h-full flex flex-col bg-slate-900 text-slate-100">
+    <html lang="en" className={`${lato.variable} ${inter.variable} h-full`}>
+      <body className="min-h-full flex flex-col">
         <Navbar />
-        <main className="flex-1 p-6 max-w-7xl mx-auto w-full">{children}</main>
+        <main className="flex-1 px-6 py-8 max-w-[1200px] mx-auto w-full">{children}</main>
       </body>
     </html>
   );
