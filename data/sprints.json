@@ -1,0 +1,11 @@
+{
+  "sprints": [
+    {
+      "id": "june-2026",
+      "title": "June 2026 Sprint",
+      "description": "Active support team sprint — update embed URL below with your Google Sheet link.",
+      "embedUrl": "https://docs.google.com/spreadsheets/d/REPLACE_WITH_YOUR_SHEET_ID/edit?usp=sharing&embedded=true",
+      "active": true
+    }
+  ]
+}

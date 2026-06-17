@@ -1,0 +1,44 @@
+{
+  "modules": [
+    {
+      "id": "onboarding-101",
+      "title": "Onboarding 101",
+      "category": "New Hire Essentials",
+      "description": "Introduction to Chowly, our mission, and what the Support team does every day.",
+      "slides": null,
+      "sop": null,
+      "video": null,
+      "pdf": null
+    },
+    {
+      "id": "salesforce-basics",
+      "title": "Salesforce Basics",
+      "category": "New Hire Essentials",
+      "description": "How we use Salesforce for case management, logging, and reporting.",
+      "slides": null,
+      "sop": null,
+      "video": null,
+      "pdf": null
+    },
+    {
+      "id": "escalation-process",
+      "title": "Escalation Process",
+      "category": "Support Procedures",
+      "description": "When and how to escalate tickets — tiers, contacts, and SLAs.",
+      "slides": null,
+      "sop": null,
+      "video": null,
+      "pdf": null
+    },
+    {
+      "id": "menu-management",
+      "title": "Menu Management",
+      "category": "Product Knowledge",
+      "description": "Understanding Chowly menu sync, common errors, and how to troubleshoot.",
+      "slides": null,
+      "sop": null,
+      "video": null,
+      "pdf": null
+    }
+  ]
+}
