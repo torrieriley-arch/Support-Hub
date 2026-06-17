@@ -59,14 +59,24 @@ Set `"active": true` on the current sprint. Past sprints appear as tabs.
 
 ---
 
-## Deployment (Vercel)
+## Deployment (GitHub Pages)
 
-1. Push this repo to GitHub
-2. Go to [vercel.com](https://vercel.com) → Import Project → select the repo
-3. Deploy — no environment variables needed
+Deployment is automatic — every push to `main` triggers a GitHub Actions workflow that builds the site and publishes it.
 
-### Custom domain (`supporthub.chowly.help`)
-1. In Vercel project settings → Domains → add `supporthub.chowly.help`
-2. In your DNS provider, add a CNAME record:
-   - **Name**: `supporthub`
-   - **Value**: `cname.vercel-dns.com`
+### One-time setup (done once in the GitHub UI)
+
+1. Go to the repo on GitHub → **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Under **Custom domain**, type `supporthub.chowly.help` and click Save
+
+### DNS setup (done once in your DNS provider)
+
+Add a CNAME record:
+- **Name**: `supporthub`
+- **Value**: `torrieriley-arch.github.io`
+
+After DNS propagates (~5–10 minutes), the site will be live at `supporthub.chowly.help` with free HTTPS.
+
+### To update the site
+
+Just edit any file (e.g., `data/training.json`) and push to `main` — GitHub Actions redeploys automatically.
