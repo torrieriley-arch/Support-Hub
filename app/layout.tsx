@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
-import SessionProvider from "@/components/SessionProvider";
 import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
@@ -22,10 +21,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-slate-900 text-slate-100">
-        <SessionProvider>
-          <Navbar />
-          <main className="flex-1 p-6 max-w-7xl mx-auto w-full">{children}</main>
-        </SessionProvider>
+        <Navbar />
+        <main className="flex-1 p-6 max-w-7xl mx-auto w-full">{children}</main>
       </body>
     </html>
   );

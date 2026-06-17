@@ -4,51 +4,18 @@ Internal web app for the Chowly Support team with two sections:
 - **Training Hub** — new hire resources (slides, SOPs, videos, PDFs)
 - **Sprint Tracker** — embedded Google Sheets sprint view
 
-Access is restricted to `@chowlyinc.com` Google accounts.
+Publicly accessible — no login required.
 
 ---
 
-## Setup
-
-### 1. Clone & install dependencies
+## Run locally
 
 ```bash
-git clone <your-repo-url>
-cd chowly-support-hub
 npm install
-```
-
-### 2. Set up Google OAuth credentials
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/) → APIs & Services → Credentials
-2. Create an OAuth 2.0 Client ID (Web application)
-3. Add authorized redirect URI:
-   - Local: `http://localhost:3000/api/auth/callback/google`
-   - Production: `https://your-domain.com/api/auth/callback/google`
-4. Copy the Client ID and Client Secret
-
-### 3. Configure environment variables
-
-```bash
-cp .env.example .env.local
-```
-
-Edit `.env.local` and fill in:
-
-```
-NEXTAUTH_SECRET=<run: openssl rand -base64 32>
-NEXTAUTH_URL=http://localhost:3000
-GOOGLE_CLIENT_ID=<from Google Cloud Console>
-GOOGLE_CLIENT_SECRET=<from Google Cloud Console>
-```
-
-### 4. Run locally
-
-```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to Google sign-in.
+Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
@@ -96,7 +63,10 @@ Set `"active": true` on the current sprint. Past sprints appear as tabs.
 
 1. Push this repo to GitHub
 2. Go to [vercel.com](https://vercel.com) → Import Project → select the repo
-3. Add environment variables in Vercel project settings (same 4 vars as `.env.local`)
-4. Update `NEXTAUTH_URL` to your Vercel domain
-5. Add the Vercel domain to authorized redirect URIs in Google Cloud Console
-6. Deploy
+3. Deploy — no environment variables needed
+
+### Custom domain (`supporthub.chowly.help`)
+1. In Vercel project settings → Domains → add `supporthub.chowly.help`
+2. In your DNS provider, add a CNAME record:
+   - **Name**: `supporthub`
+   - **Value**: `cname.vercel-dns.com`
