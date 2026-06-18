@@ -1,10 +1,10 @@
 {
   "sprints": [
     {
-      "id": "june-2026",
-      "title": "June 2026 Sprint",
-      "description": "Active support team sprint — update embed URL below with your Google Sheet link.",
-      "embedUrl": "https://docs.google.com/spreadsheets/d/REPLACE_WITH_YOUR_SHEET_ID/edit?usp=sharing&embedded=true",
+      "id": "outstanding-cases",
+      "title": "Outstanding Cases",
+      "description": "Live view of outstanding support cases tracked by the team.",
+      "embedUrl": "https://docs.google.com/spreadsheets/d/1trhZf1pRprWLRyHyFW-xzg0peNlmTTE2a-8kEYOgw5I/edit?usp=sharing&gid=43986338&embedded=true",
       "active": true
     }
   ]
