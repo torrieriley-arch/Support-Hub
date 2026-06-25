@@ -3,6 +3,7 @@ import Link from "next/link";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/training", label: "Training Hub" },
+  { href: "/errors", label: "Error Reference" },
   { href: "/sprints", label: "Sprint Tracker" },
 ];
 

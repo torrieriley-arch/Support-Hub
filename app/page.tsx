@@ -11,6 +11,15 @@ const sections = [
     cta: "Go to Training Hub",
   },
   {
+    href: "/errors",
+    icon: "⚠️",
+    eyebrow: "Support Tools",
+    title: "POS Error Reference",
+    description:
+      "Look up POS errors by system with filter and search — internal steps and client-facing language included.",
+    cta: "Search Errors",
+  },
+  {
     href: "/sprints",
     icon: "🏃",
     eyebrow: "Team Velocity",
@@ -38,11 +47,11 @@ export default function Home() {
           Chowly Support Hub
         </h1>
         <p className="text-[1.05rem] leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-          Your central home for new hire training and team sprint tracking.
+          Your central home for new hire training, POS error lookup, and team sprint tracking.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-[860px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-[1100px]">
         {sections.map((s) => (
           <Link
             key={s.href}

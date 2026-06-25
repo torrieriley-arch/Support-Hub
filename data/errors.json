@@ -1,0 +1,265 @@
+{
+  "errors": [
+    {
+      "pos": "Toast",
+      "error": "400 - Delivery info cannot be empty for delivery order",
+      "meaning": "A dining option with \"Delivery\" behavior was set in the Pickup Service Type field. Toast rejects Delivery behavior orders lacking delivery info. All third-party orders (not using in-house drivers) should use Takeout behavior.",
+      "steps": [
+        "Update Pickup Service Type on the Partner Page to a Takeout-behavior dining option",
+        "Recommend naming dining options \"Grubhub\" or \"DoorDash\" (not \"Grubhub Pickup\") to avoid confusion"
+      ],
+      "client": "The order failed because of a misconfigured dining option on your Chowly Partner record. Please correct your Delivery Service Type configuration to a pickup behavior in Toast."
+    },
+    {
+      "pos": "Toast",
+      "error": "Required modifier in option group is missing for item",
+      "meaning": "A required modifier assigned to an item was not fulfilled properly. May be caused by an underlying nested modifier issue.",
+      "steps": [
+        "A re-sync may resolve this",
+        "If the issue persists after an auto-sync, investigate nested modifier configuration"
+      ],
+      "client": "A required modifier on one of the items in your order was not fulfilled properly. A re-sync may be required. Please contact Chowly Support if the issue continues after an auto-sync."
+    },
+    {
+      "pos": "Toast",
+      "error": "You are not permitted to access this resource",
+      "meaning": "Chowly's Toast API client no longer has permission to access the /restaurants endpoint. Chowly has been removed from the client's Toast My Integrations.",
+      "steps": [
+        "Guide the client to re-add Chowly in Toast My Integrations"
+      ],
+      "client": "Chowly has been removed from your Toast integrations and needs to be added back. Follow Toast's instructions for Adding or Removing an Integration with Toast Partner Connect."
+    },
+    {
+      "pos": "Toast",
+      "error": "Customer last name cannot be empty",
+      "meaning": "A customer's last name was not provided. Toast requires a last name to process an order. Root cause is still under investigation.",
+      "steps": [
+        "Review the specific order to identify the third-party platform",
+        "May require a dev escalation to supplement \"unknown\" for orders where last name is null"
+      ],
+      "client": "A customer's last name was not provided, and Toast requires it to process the order. If this occurs, please contact Chowly Support and we'll work with the applicable partner to correct the issue long-term."
+    },
+    {
+      "pos": "Toast",
+      "error": "Item does not belong to the group",
+      "meaning": "An item on the order does not belong to the expected modifier group in Toast. Typically a menu sync issue.",
+      "steps": [
+        "A re-sync should resolve this",
+        "Check for duplicate menus on TooS"
+      ],
+      "client": "An item on the order does not belong to the expected group in your POS. A re-sync should resolve this. Contact Chowly Support if the issue continues after an auto-sync."
+    },
+    {
+      "pos": "Toast",
+      "error": "Cannot find published null entity",
+      "meaning": "An item, tender type, or dining option has been changed or deleted in Toast, causing the GUID or item ID to change. The order references an entity that no longer exists.",
+      "steps": [
+        "A re-sync should resolve this",
+        "Check for duplicate menus on TooS"
+      ],
+      "client": "An item, tender type, or dining option has been changed or deleted in your POS, causing a mismatch. A re-sync should resolve this. Contact Chowly Support if the issue continues after an auto-sync."
+    },
+    {
+      "pos": "Toast",
+      "error": "Unexpected error",
+      "meaning": "Toast's system was unable to respond when the order was sent. Typically caused by Toast maintenance or a system outage.",
+      "steps": [
+        "Check the Toast status page for active incidents: status.toasttab.com"
+      ],
+      "client": "The Toast system did not respond when we sent your order. Toast may be performing system maintenance or experiencing an outage (check status.toasttab.com). This should be a rare occurrence."
+    },
+    {
+      "pos": "Toast",
+      "error": "Too many modifiers in option group for item",
+      "meaning": "The customer selected more modifiers than the maximum allowed for that item, as configured in Toast.",
+      "steps": [
+        "A re-sync may resolve this",
+        "Check for underlying default modifiers that may be inflating the count",
+        "Contact Chowly Support if the issue persists after an auto-sync"
+      ],
+      "client": "The number of modifiers selected has exceeded the maximum allowed for this item. A re-sync may be required. Contact Chowly Support if the issue persists, or review default modifier configuration."
+    },
+    {
+      "pos": "Square",
+      "error": "\"Field must not be blank\",\"field\":",
+      "meaning": "A category name in Square has been altered, left empty, or only contains 86'd/unavailable items. Can also be triggered by a sales tax mismatch between Square and a third-party platform.",
+      "steps": [
+        "Resync the menu and confirm correct categories are pulled in Plaunch",
+        "Check for and remove any empty or blank categories",
+        "Look for a more descriptive corresponding error in Slack",
+        "Confirm with the client that the sales tax rate in Square matches each third-party platform"
+      ],
+      "client": "This usually occurs when Chowly's category list from Square falls out of sync, or when we are pulling empty/blank categories from your POS. Please notify Chowly Support of any recent category changes. Also, ensure your sales tax rate in Square matches the rate set by each delivery platform in your Merchant portal."
+    },
+    {
+      "pos": "Square",
+      "error": "NOT_FOUND - Item variation with catalog object ID not found",
+      "meaning": "An item on the third-party platform is no longer available in the POS. Common in legacy Square clients where mapping is incomplete. The item may have been removed or 86'd but still exists on the Chowly menu.",
+      "steps": [
+        "Confirm which items need to be removed or 86'd",
+        "Legacy clients: look for publishing errors in Slack and ensure mapping is complete",
+        "Sync clients: resync the menu and verify 86'd/removed items have been cleared"
+      ],
+      "client": "Some items or modifiers that have been 86'd or removed from your POS are still present on your Chowly menu. Please ensure your menu is up to date and contact Support with any changes. Sync clients can resync their menu or request a resync from Support."
+    },
+    {
+      "pos": "Square",
+      "error": "NOT_FOUND - Modifier option with catalog object ID not found",
+      "meaning": "A modifier on the Chowly menu is not correctly mapping to a modifier in the POS.",
+      "steps": [
+        "Sync clients: resyncing the menu should resolve the error",
+        "Legacy clients: look for corresponding mapping alerts in Slack and verify modifier mapping is correct",
+        "Check for duplicate menus on TooS"
+      ],
+      "client": "You have modifiers on your Chowly menu that are not correctly mapping to modifiers in your POS. Sync clients should resync their menu or contact Support to request a sync. Legacy clients should contact Support directly."
+    },
+    {
+      "pos": "Square",
+      "error": "Duplicate catalog object ID found in catalog_object_id",
+      "meaning": "The order contained duplicate modifier IDs. Square does not support modifier quantities — this is a Square platform limitation.",
+      "steps": [
+        "Sync clients: have the client rename each duplicate modifier slightly in the POS",
+        "Legacy clients: have the client submit a menu change request"
+      ],
+      "client": "Square cannot accept orders with more than one of the same modifier. If you'd like customers to choose multiple of the same modifier, we recommend slightly renaming each instance in your POS (e.g., \"Cheese\" and \"Extra Cheese\")."
+    },
+    {
+      "pos": "Square",
+      "error": "ACCESS_TOKEN_REVOKED - The provided OAuth access token has been revoke",
+      "meaning": "Chowly has lost access to the client's Square account because the OAuth token has expired (~1 year) or Chowly was removed and re-added by a new user.",
+      "steps": [
+        "Generate a new URL on the partner Plaunch page",
+        "Copy it into the Square Reactive Template in Salesforce and send to the client",
+        "In-depth steps: Reactivate Expired Square Token (Confluence)"
+      ],
+      "client": "Your Square Token has expired. Please contact Chowly Support so we can assist you in obtaining a new Square Token."
+    },
+    {
+      "pos": "Square",
+      "error": "UNAUTHORIZED - This request could not be authorized",
+      "meaning": "Same as ACCESS_TOKEN_REVOKED — the Square OAuth token has expired or been revoked.",
+      "steps": [
+        "Generate a new URL on the partner Plaunch page",
+        "Copy it into the Square Reactive Template in Salesforce and send to the client",
+        "In-depth steps: Reactivate Expired Square Token (Confluence)"
+      ],
+      "client": "Your Square Token has expired. Please contact Chowly Support so we can assist you in obtaining a new Square Token."
+    },
+    {
+      "pos": "Omnivore",
+      "error": "#<OmnivoreOneShot::TicketError: the server responded with status 503>",
+      "meaning": "The Omnivore Agent is offline. Typically caused by the POS server being turned off or losing internet connectivity.",
+      "steps": [
+        "Confirm with the client that their POS is powered on and connected to the internet",
+        "Send a test order once confirmed to verify resolution"
+      ],
+      "client": "This usually occurs when the POS server either isn't turned on or can't connect to the internet. Please ensure your POS is turned on and successfully connecting to the internet. Chowly Support can send a test order to confirm once this is done."
+    },
+    {
+      "pos": "Omnivore",
+      "error": "#<OmnivoreOneShot::TicketError: the server responded with status 400>",
+      "meaning": "The order request was malformed — likely a mapping issue where an item or modifier ID on the order does not exist in the POS.",
+      "steps": [
+        "Log in to Omnivore and check API Activity for a more detailed error response",
+        "Investigate mapping for the affected item or modifier"
+      ],
+      "client": "It appears that an item or modifier ID on the order is not present in your POS. This is likely a mapping issue. Please contact Chowly Support for assistance."
+    },
+    {
+      "pos": "Omnivore",
+      "error": "#<OmnivoreOneShot::TicketError: the server responded with status 500>",
+      "meaning": "The POS and/or integration points are not configured correctly. May require Omnivore to intervene and repair.",
+      "steps": [
+        "Review POS configuration (pos_config_error)",
+        "If the issue cannot be resolved internally, contact Omnivore directly"
+      ],
+      "client": "The Omnivore Agent needs additional configuration. Please contact Chowly Support."
+    },
+    {
+      "pos": "Omnivore",
+      "error": "#<OmnivoreOneShot::TicketError: the server responded with status 405>",
+      "meaning": "The Omnivore Agent is configured for read-only operations and cannot accept order submissions.",
+      "steps": [
+        "This is a readonly_installation error — contact Omnivore to reconfigure the Agent for write operations"
+      ],
+      "client": "The Omnivore Agent needs additional configuration. Please contact Chowly Support."
+    },
+    {
+      "pos": "Revel",
+      "error": "ITEM_IN_ORDER_NOT_AVAILABLE",
+      "meaning": "An item selected on the third-party platform has been deleted or 86'd in the Revel Online Ordering menu.",
+      "steps": [
+        "Confirm with the client which items are unavailable in Revel",
+        "86 the item on Chowly's end and request a resync if needed"
+      ],
+      "client": "An item showing on your online menu is not available in Revel. If the item is 86'd, please call Support to 86 it on our end and request a resync. If the item has been deleted, please request a resync to update your menu."
+    },
+    {
+      "pos": "Revel",
+      "error": "PRODUCT_NOT_FOUND_OR_INACTIVE",
+      "meaning": "An item ordered on the third-party platform is unavailable in the Revel Online Ordering menu. The item must either be made active in the POS or deactivated on Dejeuner.",
+      "steps": [
+        "If the item is 86'd, 86 it on RCC as well to keep menus in sync"
+      ],
+      "client": "An item ordered on the third-party platform is not available in Revel. Please ensure all items are active, or call Support to 86 the item if it is out of stock."
+    },
+    {
+      "pos": "Revel",
+      "error": "INVALID_PICKUP_TIME",
+      "meaning": "The order was placed outside of the restaurant's available hours. Usually caused by a mismatch between the timetable in Revel and the custom menu hours, or a pickup time restriction set in Revel Online Ordering Settings.",
+      "steps": [
+        "Guide the client to verify their hours match across systems",
+        "Check that pickup times are not configured in Revel Online Ordering Settings: Online Ordering Settings > Order Rules > Pickup Time"
+      ],
+      "client": "Your order failed because it was placed outside of your available ordering hours. Please ensure your Online Ordering hours match your timetable settings and that pickup times are not set up under Online Ordering Settings > Order Rules > Pickup Time."
+    },
+    {
+      "pos": "Revel",
+      "error": "BadGateway response",
+      "meaning": "Revel is experiencing a service outage. This is not a Chowly-side issue.",
+      "steps": [
+        "N/A — Revel must resolve this on their end"
+      ],
+      "client": "Revel is currently experiencing a service issue. Please contact Revel directly for next steps."
+    },
+    {
+      "pos": "Brink",
+      "error": "1 more item needed for",
+      "meaning": "An item has a modifier group with a minimum number of required selections that was not met. Either the wrong modifier was sent or the third-party platform did not require the customer to make a selection.",
+      "steps": [
+        "Investigate whether the menu or the mapping needs to be corrected"
+      ],
+      "client": "An item on the order did not meet the minimum required modifier selections. Please reach out to Chowly Support to investigate and resolve."
+    },
+    {
+      "pos": "Brink",
+      "error": "Too many items selected for",
+      "meaning": "An item has a modifier group with a maximum number of allowed selections that was exceeded. Either multiple modifiers were sent in the mapping or the third-party platform allowed the customer to select too many options.",
+      "steps": [
+        "Investigate whether the menu or the mapping needs to be corrected",
+        "Check for duplicate menus on third-party platforms",
+        "Resync"
+      ],
+      "client": "An item on the order exceeded the maximum allowed modifier selections. Please reach out to Chowly Support to investigate and resolve."
+    },
+    {
+      "pos": "Speedline",
+      "error": "Connection refused - connect(2) for \"champagne.diet\" port",
+      "meaning": "Nothing is listening on the IP:Port Chowly is attempting to connect to, or the port is blocked by a firewall.",
+      "steps": [
+        "Escalate to Tier 2 for a reinstall or troubleshooting session",
+        "Reference Speedline reinstall Confluence doc"
+      ],
+      "client": "The Speedline integration is not responding on the expected port. Please reach out to Chowly Support to schedule a reinstall/troubleshooting session with our Tier 2 team at calendly.com/chowly_support/speedlinereinstall. This will take approximately 30 minutes. Zoom must be downloaded and installed on the primary terminal beforehand."
+    },
+    {
+      "pos": "Micros",
+      "error": "Connection refused - connect(2) for \"champagne.diet\" port 30974 (champagne.diet:30974)",
+      "meaning": "Nothing is listening on the IP:Port Chowly is attempting to connect to, or the port is blocked by a firewall.",
+      "steps": [
+        "Escalate for firewall and connectivity review"
+      ],
+      "client": "This error can be caused by a firewall or internet connectivity issue. If you are not experiencing internet issues, we recommend resetting your firewall or contacting your firewall vendor for assistance."
+    }
+  ]
+}
