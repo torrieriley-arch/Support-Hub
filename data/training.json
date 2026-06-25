@@ -18,7 +18,8 @@
       "slides": null,
       "sop": "https://chowly.atlassian.net/wiki/spaces/TCP/overview",
       "video": null,
-      "pdf": null
+      "pdf": null,
+      "pptx": "https://supporthub.chowly.help/files/Platform_Reference.pptx"
     },
     {
       "id": "direct-integration-101",
